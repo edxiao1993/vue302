@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Vue3.0.2 learning</title>
+  <!-- <script src="https://unpkg.com/vue@next"></script> -->
+  <script src="../js/vue3.0.2.js"></script>
+</head>
+
+<body style="background-color:#949494;">
+  <h1>this is the title for VUE learning.
+  </h1>
+
+  <p>let's beginning</p>
+  <div id="counter">
+    counter: {{ counter }}
+  </div>
+
+  <div id="bind-attribute">
+    <span v-bind:title="message">
+      Hover your mouse here, and you will see something...
+    </span>
+  </div>
+
+</body>
+
+<script>
+  const Counter = {
+    data() {
+      return {
+        counter: 4
+      }
+    },
+
+    mounted(){
+      setInterval(() => {
+        this.counter++
+      }, 1000)
+    }
+  }
+  
+  Vue.createApp(Counter).mount('#counter')
+
+  const AttributeBinding = {
+    data() {
+      return {
+        message: 'you loaded this page on ' + new Date().toLocaleDateString()
+      }
+    }
+  }
+
+  Vue.createApp(AttributeBinding).mount('#bind-attribute')
+
+</script>
+
+</html>
