@@ -22,6 +22,11 @@
     </span>
   </div>
 
+  <div id="event-handling">
+    <p>{{ msg }} </p>
+    <button v-on:click="reverseMsg">Reverse Message</button>
+  </div>
+
 </body>
 
 <script>
@@ -38,7 +43,7 @@
       }, 1000)
     }
   }
-  
+
   Vue.createApp(Counter).mount('#counter')
 
   const AttributeBinding = {
@@ -50,6 +55,23 @@
   }
 
   Vue.createApp(AttributeBinding).mount('#bind-attribute')
+
+  const EventHandling = {
+    data() {
+      return {
+        msg: 'hello Vue.js~'
+      }
+    },
+    methods: {
+      reverseMsg() {
+        this.msg = this.msg
+          .split('')
+          .reverse()
+          .join('')
+      }
+    }
+  }
+  Vue.createApp(EventHandling).mount('#event-handling')
 
 </script>
 
