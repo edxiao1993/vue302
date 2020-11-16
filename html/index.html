@@ -27,6 +27,27 @@
     <button v-on:click="reverseMsg">Reverse Message</button>
   </div>
 
+  <div id="two-way-binding">
+    <p>{{ message }}</p>
+    <input v-model="message" />
+  </div>
+
+  <div id="list-rendering">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+
+  <div id="todo-list-app">
+    <ol>
+      <todo-item v-for="item in groceryList"
+        v-bind:todo="item"
+        v-bind:key="item.id">
+      </todo-item>
+    </ol>
+  </div>
 </body>
 
 <script>
@@ -73,6 +94,50 @@
   }
   Vue.createApp(EventHandling).mount('#event-handling')
 
+  const TwoWayBinding = {
+    data() {
+      return {
+        message: "hello Vue!"
+      }
+    }
+  }
+
+  Vue.createApp(TwoWayBinding).mount('#two-way-binding')
+
+  const ListRendering = {
+    data(){
+      return {
+        todos: [
+          {text: "learning vue"},
+          {text: "learning git"},
+          {text: "learning whatever without destination"}
+        ]
+      }
+    }
+  }
+
+  Vue.createApp(ListRendering).mount("#list-rendering")
+
+  const TodoList = {
+    data() {
+      return {
+        groceryList: [
+          {id: 0, text: 'Vegetables'},
+          {id: 1, text: 'Cheese'},
+          {id: 2, text: 'whatever...'}
+        ]
+      }
+    }
+  }
+
+  const app = Vue.createApp(TodoList)
+
+  app.component('todo-item', {
+    props: ['todo'],
+    template: '<li id={{todo.id}}>{{ todo.text }}</li>'
+  })
+
+  app.mount('#todo-list-app')
 </script>
 
 </html>
