@@ -28,7 +28,8 @@
   </div>
 
   <div id="two-way-binding">
-    <p>{{ message }}</p>
+    <!-- only render once -->
+    <p v-once>{{ message }}</p>
     <input v-model="message" />
   </div>
 

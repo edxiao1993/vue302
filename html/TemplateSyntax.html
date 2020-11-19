@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <script src="../js/vue3.0.2.js"></script>
+  <script src="../js/one.js"></script>
+</head>
+
+<body>
+<!-- how to use the if statement? -->
+<p id="appv" v-if="exp3">Now you see me</p>
+
+<!-- v-bind -->
+<a v-bind:href="url"></a>
+<a :href="url"></a>
+<a :[key]="url"></a>
+
+<!-- v-on -->
+<a v-on:click="doSth"></a>
+<a @click="doSth"></a>
+<a @[event]="doSth"></a>
+
+
+  <script>
+    const vt = {
+      data() {
+        return {
+          exp3 = true
+        }
+      }
+    }
+
+    Vue.createApp(vt).mount('#appv');
+  </script>
+</body>
+
+</html>
